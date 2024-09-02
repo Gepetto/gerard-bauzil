@@ -5,6 +5,10 @@
 #
 cmake_minimum_required(VERSION 3.10)
 
+set(PROJECT_NAME gerard_bauzil)
+set(PROJECT_DESCRIPTION "Gerard Bauzil data files")
+set(PROJECT_URL "https://github.com/Gepetto/gerard-bauzil")
+
 # Check if the submodule cmake have been initialized
 set(JRL_CMAKE_MODULES "${CMAKE_CURRENT_LIST_DIR}/cmake")
 if(EXISTS "${JRL_CMAKE_MODULES}/base.cmake")
@@ -38,11 +42,9 @@ endif()
 
 include("${JRL_CMAKE_MODULES}/base.cmake")
 
-set(PROJECT_NAME gerard_bauzil)
-set(PROJECT_DESCRIPTION "Gerard Bauzil data files")
-set(PROJECT_URL "https://github.com/Gepetto/gerard-bauzil")
+compute_project_args(PROJECT_ARGS)
+project(${PROJECT_NAME} ${PROJECT_ARGS})
 
-setup_project()
 add_subdirectory(data)
 
 config_files(urdf/cobblestone.urdf)
